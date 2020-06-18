@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveVeiculo(veiculoForm)" #veiculoForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput type="text" name="placa" [ngModel]="veiculo?.placa" required minlength="7"
+        placeholder="Insira a Placa" #placa="ngModel">
+      <mat-error *ngIf="placa.invalid">Por favor, insira a placa.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="chassi" [ngModel]="veiculo?.chassi" required minlength="10"
+        placeholder="Insira o Chassi" #chassi="ngModel">
+      <mat-error *ngIf="chassi.invalid">Por favor, insira o chassi.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" name="renavam" [ngModel]="veiculo?.renavam" required minlength="11"
+        placeholder="Insira o Renavam" #renavam="ngModel">
+      <mat-error *ngIf="renavam.invalid">Por favor, insira o renavam.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="modelo" [ngModel]="veiculo?.modelo" required minlength="3"
+        placeholder="Insira o Modelo" #modelo="ngModel">
+      <mat-error *ngIf="modelo.invalid">Por favor, insira o modelo.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="marca" [ngModel]="veiculo?.marca" required minlength="3"
+        placeholder="Insira a Marca" #marca="ngModel">
+      <mat-error *ngIf="marca.invalid">Por favor, insira a marca.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" name="ano" [ngModel]="veiculo?.ano" required minlength="4"
+        placeholder="Insira o Ano" #ano="ngModel">
+        <mat-error *ngIf="ano.invalid">Por favor, insira o ano.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Salvar</button>
+  </form>
+</mat-card>

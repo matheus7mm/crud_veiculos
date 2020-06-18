@@ -1,0 +1,23 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="veiculos.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let veiculo of veiculos">
+    <mat-expansion-panel-header>
+      {{ veiculo.placa }}
+    </mat-expansion-panel-header>
+    <p> Chassi: {{ veiculo.chassi }} </p>
+    <p> Renavam: {{ veiculo.renavam }} </p>
+    <p> Modelo: {{ veiculo.modelo }} </p>
+    <p> Marca: {{ veiculo.marca }} </p>
+    <p> Ano: {{ veiculo.ano }} </p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', veiculo.id]">Editar</a>
+      <button mat-button color="warn" (click)='onDelete(veiculo.id)'>Excluir</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="totalVeiculos" [pageSize]="veiculosPerPage" [pageSizeOptions]="pageSizeOptions"
+  (page)="onChangePage($event)" *ngIf="veiculos.length > 0">
+</mat-paginator>
+<p class="info-text mat-body-1" *ngIf="veiculos.length <= 0 && !isLoading">
+  Nenhum veículo foi adicionado ainda.
+</p>
